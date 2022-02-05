@@ -126,6 +126,7 @@ def detect_armor_red_image(frame,gray,binary):
             # print("data_dict",len(data_dict))
 
             mf.cv_show("preprocessing",img1)
+            cv2.imwrite("preprocessing.jpg",img1)
 
             for i in range(len(data_list_red)):
                 # 第一次筛选，通过长宽比把可能值放入first_data列表中

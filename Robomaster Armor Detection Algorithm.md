@@ -282,7 +282,7 @@ second_data2_blue = []
 
 Here we use img3.jpg as an example.
 
-![img3](RM_CV\images\img3.jpg)
+![img3](RM_CV/images/img3.jpg)
 
 ------
 
@@ -310,7 +310,7 @@ def get_color(frame,color=RED):
             cv2.imwrite('red_mask.jpg',mask)
 ```
 
-![red_mask](RM_CV\red_mask.jpg)
+![red_mask](RM_CV/red_mask.jpg)
 
 - In the above image, you can see, those white areas represent the detected red areas in the original image.
 
@@ -323,7 +323,7 @@ def get_color(frame,color=RED):
   cv2.imwrite('red_blurred.jpg',blurred)
   ```
   
-  ![red_blurred](RM_CV\red_blurred.jpg)
+  ![red_blurred](RM_CV/red_blurred.jpg)
 
 ------
 
@@ -335,7 +335,7 @@ def get_color(frame,color=RED):
   return (hsv,gray,binary)
   ```
   
-  ![red_binary](RM_CV\red_binary.jpg)
+  ![red_binary](RM_CV/red_binary.jpg)
 
 ------
 
@@ -491,7 +491,7 @@ if amount > 0:
             cv2.imwrite("preprocessing.jpg",img1)
 ```
 
-![minAreaRect](RM_CV\images\minAreaRect.png)
+![minAreaRect](RM_CV/images/minAreaRect.png)
 
 ![preprocessing](RM_CV\preprocessing.jpg)
 
@@ -538,7 +538,7 @@ The next following steps is to find the LED-bar and screen out other unnecessary
             cv2.imwrite("first-filter-red.jpg",img2)
 ```
 
-![first-filter-red](RM_CV\first-filter-red.jpg)
+![first-filter-red](RM_CV/first-filter-red.jpg)
 
 Note: 
 
@@ -599,7 +599,7 @@ for i in range(len(first_data_red)):
             cv2.imwrite("second-filter-red.jpg",frame)
 ```
 
-![second-filter-red](RM_CV\second-filter-red.jpg)
+![second-filter-red](RM_CV/second-filter-red.jpg)
 
 Now we can see that the green rectangles have represented the pairs of LED-bars, which are on the both sides of the armor plate.
 
@@ -615,7 +615,7 @@ Now we can see that the green rectangles have represented the pairs of LED-bars,
   
   Using the information of pairs of LED-bars (such as the vertices positions point 1 and point 2), we can use scaling to find positions of A and B based on the point 1 and point 2.
   
-  ![IMG_1340](RM_CV\images\img22.jpg)
+  ![IMG_1340](RM_CV/images/img22.jpg)
 
 ```python
 if len(second_data1_red):
@@ -705,10 +705,8 @@ Note:
 
 - The basic idea is to use Template Matching skills, in which I listed digits from 1 to 9 as templates, and use the digits shown in ROI to match all these templates. During the matching, the system also records the scores. If the score is the highest, which means both digit in ROI and that highest-score template has the best fit. In this case, the system can infer the digit onto the corresponding armor plate.
   
-  ![](RM_CV\Template\1.jpg)![2](RM_CV\Template\2.jpg)![3](RM_CV\Template\3.jpg)
+  ![1](RM_CV/Template/1.jpg)![2](RM_CV/Template/2.jpg)![3](RM_CV/Template/3.jpg)![4.jpg](RM_CV/Template/4.jpg)
   
-  ![4.jpg](RM_CV\Template\4.jpg)
-
 - Please go to the 4.5 to see the information on digit_recognize module first.
 
 ```python
@@ -723,7 +721,7 @@ Note:
 
 - When we took the digit in digit_recognize module, we can put text the digit in the image
   
-  ![target-red](RM_CV\target-red.jpg)
+  ![target-red](RM_CV/target-red.jpg)
 
 ### 4.5 digit_recognize module
 
@@ -796,15 +794,15 @@ def digit_detect(roi):
 
 ROI image:
 
-![number-capture-red-0](RM_CV\number-capture-red-0.jpg)
+![number-capture-red-0](RM_CV/number-capture-red-0.jpg)
 
 After processing, such as 1) change to the binary image 2) find contours 3) reduce noise 4) four-point-transformation 5) resize, we get our final target
 
-![final-target](RM_CV\final-target.jpg)
+![final-target](RM_CV/final-target.jpg)
 
 This one is much similar to the template:
 
-![2](RM_CV\Template\2.jpg)
+![2](RM_CV\Template/2.jpg)
 
 ------
 
@@ -846,7 +844,7 @@ We can see number 2 has the highest score, which means number 2 has the best-fit
 
 And we get our result as:
 
-![target-red](RM_CV\target-red.jpg)
+![target-red](RM_CV/target-red.jpg)
 
 ## 5 TODO
 
